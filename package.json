@@ -5,7 +5,6 @@
     "engines": {
         "ghost": ">=5.0.0"
     },
-    "license": "MIT",
     "scripts": {
         "dev": "rollup -c --environment BUILD:development -w",
         "build": "rollup -c --environment BUILD:production",
