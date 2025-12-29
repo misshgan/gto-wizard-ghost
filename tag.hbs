@@ -1,35 +1,14 @@
 {{!< default}}
 
-<div class="gh-page">
-    <div class="gh-container">
-
-        {{#tag}}
-        <header class="gh-page-head">
-
-            <h1>{{name}}</h1>
-
-            <p>
-                {{#if description}}
-                    {{description}}
-                {{else}}
-                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
-                {{/if}}
-            </p>
-
-            {{#if feature_image}}
-                <img class="gh-page-image" src="{{feature_image}}" alt="{{name}}" />
-            {{/if}}
-
-        </header>
-        {{/tag}}
-
-        <div class="gh-postfeed">
-        {{#foreach posts}}
-
-            {{> "card"}} {{!-- partials/card.hbs --}}
-
-        {{/foreach}}
-        </div>
-
-    </div>
-</div>
+<section class="cards-list cards-list--author-tag cards-list--separate flex direction-column" data-api-url="{{@site.url}}" data-content-key="{{@custom.content_api_key}}" data-tag-slug="{{tag.slug}}">
+  <div class="cards-list__header flex items-center space-between">
+    <h2 class="cards-list__title">{{tag.name}}</h2>
+  </div>
+  <div class="cards-list__articles">
+    {{#get "posts" filter="tags:[{{tag.slug}}]" include="tags" limit=6}}
+      {{#foreach posts}}
+        {{> components/cards/card-default class='card--default-smaller'}}
+      {{/foreach}}
+    {{/get}}
+  </div>
+</section>

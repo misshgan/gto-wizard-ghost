@@ -1,0 +1,43 @@
+/* Quote author component
+/* ---------------------------------------------------------- */
+
+.quote-author {
+  margin-top: 1rem;
+  text-align: left;
+  font-family: var(--font-sans-serif);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+/* Center alignment for alternative blockquote style */
+.quote-author--centered {
+  text-align: center;
+}
+
+.quote-author__text {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.quote-author__text::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-text-primary);
+}
+
+/* Adjust blockquote margin when it has an author */
+.gh-content blockquote.has-author {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quote-author {
+    font-size: 14px;
+  }
+}
+

@@ -1,4 +1,15 @@
 
+/* Hide content until snippets are processed
+/* ---------------------------------------------------------- */
+
+.gh-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gh-content.snippets-ready {
+  opacity: 1;
+}
 
 /* Content grid
 /* ---------------------------------------------------------- */
@@ -17,6 +28,11 @@
         [main-start] var(--main) [main-end]
         var(--wide) [wide-end]
         var(--full) [full-end];
+
+    @media (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .gh-canvas > * {
@@ -41,7 +57,7 @@
 /* ---------------------------------------------------------- */
 
 .gh-content > * + * {
-    margin-top: 4vmin;
+    margin-top: 3.2rem;
 }
 
 .gh-content [id]:not(:first-child) {
@@ -57,21 +73,82 @@
     margin-top: 6vmin;
 }
 
+.gh-content > p > b,
+.gh-content > p > strong {
+    font-weight: 500;
+}
+
 .gh-canvas > blockquote,
 .gh-canvas > ol,
 .gh-canvas > ul,
 .gh-canvas > dl,
-.gh-canvas > p {
-    font-family: var(--font-serif);
+.gh-canvas > p,
+.gh-content .content-grid > p,
+.gh-content .kg-callout-card div.kg-callout-text {
+    font-family: var(--font-sans-serif);
     font-weight: 400;
-    font-size: 2rem;
-    line-height: 1.6em;
+    font-size: clamp(1.6rem, 1.457rem + 0.238vw, 1.8rem);
+    line-height: 1.75;
 }
 
-.gh-content > ul,
-.gh-content > ol,
-.gh-content > dl {
-    padding-left: 1.9em;
+.gh-canvas > blockquote {
+    font-size: clamp(2.2rem, 1.771rem + 0.714vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+.gh-content ul,
+.gh-content ol,
+.gh-content dl {
+    padding-left: 1.9rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.4rem;
+}
+
+/* Nested lists - add top margin */
+.gh-content ul ul,
+.gh-content ul ol,
+.gh-content ol ul,
+.gh-content ol ol,
+.gh-content dl ul,
+.gh-content dl ol {
+    margin-top: 1.6rem;
+}
+
+.gh-content ul li::marker,
+.gh-content ol li::marker {
+    color: var(--color-dark-grey);
+}
+
+.gh-content h2 {
+    font-size: clamp(3.2rem, 2.629rem + 0.952vw, 4rem);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.gh-content h3 {
+    font-size: clamp(2.4rem, 1.829rem + 0.952vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.gh-content h4 {
+    font-size: clamp(2.2rem, 2.057rem + 0.238vw, 2.4rem);
+    font-weight: 500;
+    line-height: 1.33;
+}
+
+.gh-content h5 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.36;
+}
+
+.gh-content h6 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1.33;
 }
 
 .gh-content hr {
@@ -111,25 +188,60 @@
     }
 }
 
+/* Snippets
+/* ---------------------------------------------------------- */
+
+.gh-content .snippet-title {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.gh-content .content-grid {
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 4rem;
+
+    &.col-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    &.col-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    &.col-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    & > * {
+        margin: 0 !important;
+    }
+}
+
 
 /* Cards
 /* ---------------------------------------------------------- */
 
 .gh-content :not(.kg-card):not([id]) + .kg-card {
-    margin-top: 6vmin;
+    margin-top: clamp(4.8rem, 3.657rem + 1.905vw, 6.4rem);
 }
 
 .gh-content .kg-card + :not(.kg-card) {
-    margin-top: 6vmin;
+    margin-top: clamp(4.8rem, 3.657rem + 1.905vw, 6.4rem);
+}
+
+.gh-content .kg-image-card img {
+    border-radius: var(--radius-large);
 }
 
 figcaption {
     padding: 1.5rem 1.5rem 0;
-    text-align: center;
-    color: rgba(0,0,0,0.5);
-    font-weight: 600;
-    font-size: 1.3rem;
-    line-height: 1.4em;
+    font-family: var(--font-sans-serif);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 1.457rem + 0.238vw, 1.8rem);
+    line-height: 1.75;
+    text-align: start;
 }
 
 figcaption strong {
@@ -172,6 +284,10 @@ figcaption strong {
 
 .kg-image-card img {
     margin: auto;
+}
+
+.kg-image-card a {
+    display: block !important;
 }
 
 
@@ -231,4 +347,107 @@ figcaption strong {
 
 .gh-content tbody tr:last-child {
     border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+
+html.theme-dark {
+    .gh-content a {
+        color: var(--color-accent);
+    }
+
+    .gh-content figcaption {
+        color: var(--color-light-grey);
+    }
+}
+
+html.theme-light {
+    .gh-content a {
+        color: var(--color-accent);
+    }
+
+    .gh-content figcaption {
+        color: var(--color-dark-grey);
+    }
+}
+
+
+/* Lightbox styles
+/* ---------------------------------------------------------- */
+
+/* Make images in content clickable */
+.gh-content a[data-caption] {
+    text-decoration: none;
+    border: none;
+}
+
+.gh-content a[data-caption]:hover {
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+/* Customize baguetteBox to match theme */
+#baguetteBox-overlay {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    z-index: 9999;
+}
+
+#baguetteBox-overlay figure {
+    margin: 0;
+}
+
+#baguetteBox-overlay figcaption {
+    color: var(--color-white);
+    font-family: var(--font-sans-serif);
+    font-size: 1.4rem;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: var(--radius-medium);
+    margin-top: 1.5rem;
+}
+
+html.theme-dark #baguetteBox-overlay figcaption {
+    color: var(--color-white);
+}
+
+html.theme-light #baguetteBox-overlay figcaption {
+    color: var(--color-white);
+}
+
+/* Navigation buttons */
+#baguetteBox-overlay .baguetteBox-button {
+    color: var(--color-white);
+    transition: all 0.2s ease;
+}
+
+#baguetteBox-overlay .baguetteBox-button:hover {
+    
+}
+
+#baguetteBox-overlay .baguetteBox-button#close-button {
+    top: 2rem;
+    right: 2rem;
+}
+
+#baguetteBox-overlay .baguetteBox-button#previous-button,
+#baguetteBox-overlay .baguetteBox-button#next-button {
+    
+}
+
+@media (max-width: 768px) {
+    /* #baguetteBox-overlay .full-image {
+        max-width: 95vw;
+        max-height: 85vh;
+    } */
+    
+    #baguetteBox-overlay figcaption {
+        font-size: 1.2rem;
+        padding: 1rem 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    #baguetteBox-overlay .baguetteBox-button#close-button {
+        top: 1rem;
+        right: 1rem;
+    }
 }

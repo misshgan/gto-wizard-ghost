@@ -1,0 +1,15 @@
+{{!< default}}
+
+{{> 
+  components/sections/cards-list
+  scenario="articles"
+  class="cards-list--articles cards-list--separate"
+  title="Articles"
+  formats=@custom.articles_formats
+  types=@custom.articles_types
+  cardType='default'
+  cardClass='card--default-smaller'
+  limit='6'
+  infiniteScroll='true'
+  filterByAuthors='true'
+}}

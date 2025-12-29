@@ -1,0 +1,130 @@
+/* Features component
+/* ---------------------------------------------------------- */
+
+.features {
+  margin-top: clamp(7.2rem, 3.771rem + 5.714vw, 12rem);
+
+  &__title {
+    font-size: clamp(1.8rem, 1.514rem + .476vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.81;
+  }
+  &__items {
+    margin-top: clamp(2.4rem, 1.829rem + 0.952vw, 3.2rem);
+  }
+  &__item {}
+
+  .feature-item {
+
+    &__link {
+      display: flex;
+      align-items: center;
+      padding: 1.6rem;
+      text-decoration: none;
+      color: inherit;
+
+      @media (max-width: 900px) {
+        flex-wrap: wrap;
+        row-gap: 1.6rem;
+      }
+
+      @media (max-width: 600px) {
+        padding: 2.4rem 0;
+      }
+    }
+
+    &__icon {
+      margin-right: 1.6rem;
+      padding: .5rem;
+      border-radius: var(--radius-small);
+      line-height: 0;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+    &__title {
+      margin-right: 3.2rem;
+
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.5;
+
+      flex-shrink: 0;
+    }
+    &__description {
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.5;
+
+      @media (max-width: 900px) {
+        min-width: 100%;
+      }
+    }
+  }
+}
+
+html.theme-dark {
+
+  .feature-item {
+
+    &__icon {
+      background: var(--color-light-black);
+
+      svg path {
+        fill: var(--color-dark-grey);
+      }
+    }
+
+    &:hover .feature-item__icon {
+      svg path {
+        fill: var(--color-accent);
+      }
+    }
+
+    &:hover {
+      background: rgba(32, 32, 34, 0.32);
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid rgba(253, 253, 253, 0.10);
+    }
+
+    &__description {
+      color: var(--color-light-grey);
+    }
+  }
+}
+
+html.theme-light {
+
+  .feature-item {
+
+    &__icon {
+      background: #EEEEF0;
+
+      svg path {
+        fill: var(--color-light-grey);
+      }
+    }
+
+    &:hover .feature-item__icon {
+      svg path {
+        fill: var(--color-accent);
+      }
+    }
+
+    &:hover {
+      background: rgba(238, 238, 240, 0.40);
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid #CECEDB;
+    }
+
+    &__description {
+      color: var(--color-dark-grey);
+    }
+  }
+}

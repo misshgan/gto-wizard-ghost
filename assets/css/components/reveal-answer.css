@@ -1,0 +1,154 @@
+/* Reveal answer component
+/* ---------------------------------------------------------- */
+
+.reveal-answer {
+  margin: 3.2rem 0 0;
+}
+
+.reveal-answer__header {
+  display: flex;
+  align-items: center;
+  column-gap: .8rem;
+}
+
+.reveal-answer__title {
+  font-family: var(--font-sans-serif);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 1.457rem + 0.238vw, 1.8rem);
+  line-height: 1.75;
+  color: var(--color-text-primary);
+}
+
+.reveal-answer__icon {
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.reveal-answer.is-open .reveal-answer__icon {
+  transform: rotate(0deg);
+}
+
+ol.reveal-answer__answers {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  padding: 0 0 0 4.4rem;
+  list-style-type: upper-alpha;
+  list-style-position: outside;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: .8rem;
+}
+
+.reveal-answer.is-open .reveal-answer__answers {
+  max-height: 2000px;
+  padding: 2.4rem 0 0 4.4rem;
+  opacity: 1;
+}
+
+.reveal-answer__answer {
+  position: relative;
+  padding: 1.2rem 1.2rem 1.2rem 1rem;
+  margin-left: 0;
+  border-radius: var(--radius-medium);
+  transition: var(--transition-default);
+
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 3.2rem;
+  color: var(--color-text-primary);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -4.4rem;    
+    width: calc(100% + 4.4rem);
+    height: 100%;
+    transform: translateY(-50%);
+    border: 1px solid rgba(253, 253, 253, 0.10);
+    border-radius: var(--radius-medium);
+    z-index: -1;
+  }
+
+  &::marker {
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 3.2rem;
+
+    position: absolute !important;
+    right: calc(100% + 1rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.reveal-answer__answer:last-child {
+  margin-bottom: 0;
+}
+
+.reveal-answer__answer-text {
+  display: block;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans-serif);
+  font-size: inherit;
+  line-height: 1.6;
+}
+
+html.theme-light {
+    .reveal-answer {
+
+      &__icon::after {
+        content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.6491 18.8476C23.4241 19.0723 23.1191 19.1985 22.8011 19.1985C22.4831 19.1985 22.1781 19.0723 21.9531 18.8476L16.0011 12.8956L10.0491 18.8476C9.9392 18.9655 9.80672 19.06 9.65952 19.1256C9.51232 19.1912 9.35342 19.2265 9.19229 19.2293C9.03117 19.2321 8.87112 19.2025 8.7217 19.1422C8.57228 19.0818 8.43655 18.992 8.32259 18.878C8.20864 18.7641 8.11881 18.6283 8.05846 18.4789C7.99811 18.3295 7.96847 18.1694 7.97131 18.0083C7.97415 17.8472 8.00942 17.6883 8.07501 17.5411C8.14059 17.3939 8.23516 17.2614 8.35306 17.1516L15.1531 10.3516C15.3781 10.1268 15.6831 10.0006 16.0011 10.0006C16.3191 10.0006 16.6241 10.1268 16.8491 10.3516L23.6491 17.1516C23.8738 17.3766 24 17.6816 24 17.9996C24 18.3176 23.8738 18.6226 23.6491 18.8476Z" fill="%23000000"/></svg>');
+      }
+
+      &__answer--correct::marker {
+        color: var(--color-black);
+      }
+
+      &__answer--wrong::marker {
+        color: var(--color-black);
+      }
+
+      &__answer--correct::before {
+        background: rgba(170, 251, 178, 0.40);
+      }
+
+      &__answer--wrong::before {
+        background: rgba(234, 58, 57, 0.20);
+      }
+    }
+}
+
+html.theme-dark {
+  .reveal-answer {
+
+    &__icon::after {
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.6491 18.8476C23.4241 19.0723 23.1191 19.1985 22.8011 19.1985C22.4831 19.1985 22.1781 19.0723 21.9531 18.8476L16.0011 12.8956L10.0491 18.8476C9.9392 18.9655 9.80672 19.06 9.65952 19.1256C9.51232 19.1912 9.35342 19.2265 9.19229 19.2293C9.03117 19.2321 8.87112 19.2025 8.7217 19.1422C8.57228 19.0818 8.43655 18.992 8.32259 18.878C8.20864 18.7641 8.11881 18.6283 8.05846 18.4789C7.99811 18.3295 7.96847 18.1694 7.97131 18.0083C7.97415 17.8472 8.00942 17.6883 8.07501 17.5411C8.14059 17.3939 8.23516 17.2614 8.35306 17.1516L15.1531 10.3516C15.3781 10.1268 15.6831 10.0006 16.0011 10.0006C16.3191 10.0006 16.6241 10.1268 16.8491 10.3516L23.6491 17.1516C23.8738 17.3766 24 17.6816 24 17.9996C24 18.3176 23.8738 18.6226 23.6491 18.8476Z" fill="%23FFFFFF"/></svg>');
+    }
+
+    &__answer--correct::marker {
+      color: #AAFBB2;
+    }
+
+    &__answer--wrong::marker {
+      color: #EA3A39;
+    }
+
+    &__answer--correct::before {
+      background: rgba(170, 251, 178, 0.06);
+    }
+
+    &__answer--wrong::before {
+      background: rgba(234, 58, 57, 0.06);
+    }
+  }
+}

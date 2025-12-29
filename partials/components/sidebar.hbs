@@ -1,0 +1,81 @@
+{{!-- Sidebar component -------------------------------------------------- Sidebar component --}}
+
+<aside class="sidebar">
+  <div class="wrapper flex direction-column">
+    {{> components/logo-dropdown class='logo-dropdown--sidebar'}}
+    <nav class="sidebar-list-wrapper flex direction-column">
+
+      <ul class="sidebar-list-primary flex direction-column">
+        <li class="sidebar-list-primary__item">
+          <a href="/" class="sidebar-list-primary__link">
+            {{> icons/sidebar/featured}}
+            <span class="sidebar-list-primary__link-text">Featured</span>
+          </a>
+        </li>
+        <li class="sidebar-list-primary__item">
+          <a href="/articles" class="sidebar-list-primary__link">
+            {{> icons/sidebar/articles}}
+            <span class="sidebar-list-primary__link-text">Articles</span>
+          </a>
+        </li>
+        <li class="sidebar-list-primary__item">
+          <a href="/videos" class="sidebar-list-primary__link">
+            {{> icons/sidebar/videos}}
+            <span class="sidebar-list-primary__link-text">Videos</span>
+          </a>
+        </li>
+        <li class="sidebar-list-primary__item">
+          <a href="/patch-notes" class="sidebar-list-primary__link">
+            {{> icons/sidebar/notes}}
+            <span class="sidebar-list-primary__link-text">Patch Notes</span>
+          </a>
+        </li>
+        <li class="sidebar-list-primary__item">
+          <a href="https://dailydoseofgto.com" class="sidebar-list-primary__link">
+            {{> icons/sidebar/ebook}}
+            <span class="sidebar-list-primary__link-text">eBook</span>
+          </a>
+        </li>
+        <li class="sidebar-list-primary__item">
+          <a href="https://help.gtowizard.com" class="sidebar-list-primary__link">
+            {{> icons/sidebar/help-center}}
+            <span class="sidebar-list-primary__link-text">Help Center</span>
+          </a>
+        </li>
+        <li class="sidebar-list-primary__item">
+          <a href="#" class="sidebar-list-primary__link">
+            {{> icons/sidebar/features}}
+            <span class="sidebar-list-primary__link-text">Features</span>
+          </a>
+        </li>
+        {{!-- <li class="sidebar-list-primary__item">
+          <a href="#" class="sidebar-list-primary__link">
+            {{> icons/sidebar/engine}}
+            <span class="sidebar-list-primary__link-text">Engine</span>
+          </a>
+        </li> --}}
+      </ul>
+
+      <div class="sidebar-list-secondary">
+        <h2 class="sidebar-list-secondary__title">
+          Tags
+        </h2>
+        <ul class="sidebar-list-secondary__list">
+          {{#get 'tags' limit='5' order='asc' filter="slug:[mtt, cash, hu-sng, preflop, postflop, icm, exploit, strategy]"}}
+            {{#foreach tags}}
+              <li class="sidebar-list-secondary__item">
+                <a href="{{url}}" class="sidebar-list-secondary__link">
+                  <span {{#if accent_color}}style="background-color: {{accent_color}}"{{/if}} class="bullet"></span>
+                  {{name}}
+                </a>
+              </li>
+            {{/foreach}}
+          {{/get}}
+        </ul>
+      </div>
+
+    </nav>
+
+    {{> components/theme-toggle class='theme-toggle--sidebar'}}
+  </div>
+</aside>

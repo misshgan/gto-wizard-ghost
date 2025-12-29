@@ -1,0 +1,14 @@
+{{!< default}}
+
+{{> 
+  components/sections/cards-list
+  scenario="articles"
+  class="cards-list--patch-notes cards-list--separate"
+  title="Patch Notes"
+  formats=@custom.patch_notes_formats
+  cardType='default'
+  cardClass='card--default-smaller'
+  limit='6'
+  infiniteScroll='true'
+  id='separate-patch-notes'
+}}

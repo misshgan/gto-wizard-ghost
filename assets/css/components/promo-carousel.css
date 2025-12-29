@@ -1,0 +1,30 @@
+/* Promo Carousel component
+/* ---------------------------------------------------------- */
+
+.promo-carousel {
+  margin-top: 12rem;
+  position: relative;
+  max-width: 100%;
+
+  &__container {
+  }
+  
+  &__item {
+
+    img {
+      object-fit: cover;
+      aspect-ratio: 1.78 / 1;
+      border-radius: var(--radius-large);
+    }
+  }
+  
+  .swiper {
+  }
+  
+  .swiper-wrapper {
+  }
+  
+  .swiper-slide {
+  }
+  
+}

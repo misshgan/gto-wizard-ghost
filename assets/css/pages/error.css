@@ -1,0 +1,45 @@
+/* Error page
+/* ---------------------------------------------------------- */
+
+.error {
+  height: 100vh;
+  padding: 2.4rem;
+
+  .error-wrapper {
+    row-gap: 1.6rem;
+  }
+  .error-title {
+    font-size: 3.2rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .error-description {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .button {
+  }
+}
+
+html.theme-dark {
+  .error-cards-light {
+    display: none;
+    visibility: hidden;
+  }
+  
+  .error-description {
+    color: var(--color-dark-grey);
+  }
+}
+
+html.theme-light {
+  .error-cards-dark {
+    display: none;
+    visibility: hidden;
+  }
+  .error-description {
+    color: var(--color-light-black);
+  }
+}

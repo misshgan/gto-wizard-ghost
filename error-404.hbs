@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="theme-dark" lang="{{@site.locale}}">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{asset "built/index.css"}}" />
+    <script src="{{asset "built/index.js"}}" defer></script>
+
+    <script>
+    // Apply theme immediately to prevent flash
+    (function() {
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+        
+        const savedTheme = getCookie('theme') || 'light';
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.remove('theme-light');
+            document.documentElement.classList.add('theme-dark');
+        } else {
+            document.documentElement.classList.remove('theme-dark');
+            document.documentElement.classList.add('theme-light');
+        }
+    })();
+    </script>
+
+    <title>{{meta_title}}</title>
+
+    {{ghost_head}}
+    {{!-- Outputs important meta data and settings, should always be in <head> --}}
+
+</head>
+<body class="{{body_class}}">
+
+<main>
+
+   <section class="error flex items-center direction-column content-center">
+    <div class="error-wrapper flex direction-column items-center">
+      {{> icons/error/cards-light class='error-cards-light'}}
+      {{> icons/error/cards-dark class='error-cards-dark'}}
+      <h1 class="error-title">End of the line. The cards stop here.</h1>
+      <p class="error-description">{{message}}</p>
+      <a href="{{@site.url}}" class="button button--primary">Back to Homepage</a>
+    </div>
+   </section>
+
+</main>
+
+{{!-- <foot> --}}
+{{ghost_foot}}
+{{!-- Outputs important scripts - should always be included before closing body tag --}}
+
+</body>
+</html>

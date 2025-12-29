@@ -1,0 +1,39 @@
+<div class="filter-popup">
+  <div class="filter-popup__content">
+    <!-- Formats Column -->
+    <div class="filter-popup__column">
+      <h3 class="filter-popup__title">Formats</h3>
+      <div class="filter-popup__options" id="formats-list">
+        <!-- Formats will be populated by JavaScript -->
+      </div>
+    </div>
+
+    {{#if types}}
+    <!-- Types Column -->
+    <div class="filter-popup__column">
+      <h3 class="filter-popup__title">Types</h3>
+      <div class="filter-popup__options" id="types-list">
+        <!-- Types will be populated by JavaScript -->
+      </div>
+    </div>
+    {{/if}}
+
+    {{#if filterByAuthors}}
+    <!-- Author Column -->
+    <div class="filter-popup__column">
+      <h3 class="filter-popup__title">Author</h3>
+      <div class="filter-popup__options" id="authors-list">
+        <!-- Authors will be populated by JavaScript -->
+      </div>
+    </div>
+    {{/if}}
+  </div>
+
+  <!-- Horizontal Divider -->
+  <div class="filter-popup__horizontal-divider"></div>
+
+  <!-- Action Button -->
+  <div class="filter-popup__actions">
+    <button class="filter-popup__cancel-btn">Reset</button>
+  </div>
+</div>

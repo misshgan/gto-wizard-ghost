@@ -1,0 +1,23 @@
+<article class="card card--default flex direction-column {{class}}" data-post-id="{{id}}">
+  {{#if feature_image}}
+    <a href="{{url}}" class="card__image">
+      <img data-src="{{feature_image}}" class="lazyload" alt="{{title}}">
+    </a>
+  {{/if}}
+  <div class="card__main flex direction-column">
+    <h3 class="card__title"><a href="{{url}}">{{title}}</a></h3>
+    {{#if custom_excerpt}}
+      <p class="card__description">{{custom_excerpt}}</p>
+    {{/if}}
+    <div class="card__footer flex items-center">
+      {{#if primary_tag}}
+        <a href="{{primary_tag.url}}" class="card__tag">{{primary_tag.name}}</a>
+      {{/if}}
+      <div class="card__meta flex items-center">
+        <span class="card__date">{{date format="MMM DD, YYYY"}}</span>
+        {{#if reading_time}}
+          <span class="card__reading-time">{{reading_time}}</span>
+        {{/if}}
+    </div>
+  </div>
+</article>

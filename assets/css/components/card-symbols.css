@@ -1,0 +1,41 @@
+/* Card symbols component
+/* ---------------------------------------------------------- */
+
+.card-symbol-char {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card-symbol {
+  font-family: 'math', serif;
+}
+
+/* Red color for hearts (♥️) */
+.card-symbol--red,
+.card-symbol-char--red {
+  color: red;
+}
+
+/* Green color for clubs (♣️) */
+.card-symbol--green,
+.card-symbol-char--green {
+  color: green;
+}
+
+/* Blue color for diamonds (♦️) */
+.card-symbol--blue,
+.card-symbol-char--blue {
+  color: blue;
+}
+
+/* Black color for spades (♠️) - black in light theme, gray in dark theme */
+.card-symbol--black,
+.card-symbol-char--black {
+  color: black;
+}
+
+html.theme-dark .card-symbol--black,
+html.theme-dark .card-symbol-char--black {
+  color: #B3B3B8; /* Using --color-light-grey from vars.css */
+}
+

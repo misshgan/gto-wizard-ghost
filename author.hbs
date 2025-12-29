@@ -1,46 +1,30 @@
 {{!< default}}
 
-<div class="gh-page">
-    <div class="gh-container">
+{{#author}}
 
-        {{#author}}
-        <header class="gh-page-head">
-            {{#if profile_image}}
-                <img class="gh-author-image" src="{{profile_image}}" alt="{{name}}" />
-            {{/if}}
+<section class="author-info flex items-center space-between">
+  <div class="author-info__main flex direction-column">
+    <span class="author-info__small">Author</span>
+    <h1 class="author-info__title">{{name}}</h1>
+    {{#if bio}}
+      <p class="author-info__bio">{{bio}}</p>
+    {{/if}}
+  </div>
+  {{#if profile_image}}
+    <img src="{{profile_image}}" class="author-info__image" alt="{{name}}">
+  {{/if}}
+</section>
 
-            <h1>{{name}}</h1>
-            {{#if bio}}
-                <p>{{bio}}</p>
-            {{/if}}
+{{>
+  components/sections/cards-list
+  scenario="author"
+  class="cards-list--author-tag cards-list--separate"
+  title=(concat name "'s articles")
+  authorSlug=slug
+  cardType='default'
+  cardClass='card--default-smaller'
+  limit='6'
+  infiniteScroll='true'
+}}
 
-            <div class="gh-author-meta">
-                <div class="gh-author-links">
-                    {{#if website}}
-                        <a href="{{website}}" target="_blank" rel="noopener">Website</a>
-                    {{/if}}
-                    {{#if twitter}}
-                        <a href="{{twitter_url}}" target="_blank" rel="noopener">Twitter</a>
-                    {{/if}}
-                    {{#if facebook}}
-                        <a href="{{facebook_url}}" target="_blank" rel="noopener">Facebook</a>
-                    {{/if}}
-                </div>
-            </div>
-
-            {{#if cover_image}}
-                <img class="gh-page-image" src="{{cover_image}}" alt="{{name}}" />
-            {{/if}}
-        </header>
-        {{/author}}
-
-        <div class="gh-postfeed">
-        {{#foreach posts}}
-
-            {{> "card"}} {{!-- partials/card.hbs --}}
-
-        {{/foreach}}
-        </div>
-
-    </div>
-</div>
+{{/author}}

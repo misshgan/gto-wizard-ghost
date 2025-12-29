@@ -1,0 +1,20 @@
+/* Search bar component
+/* ---------------------------------------------------------- */
+
+.search-bar {
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+html.theme-dark .search-bar {
+  svg path {
+    stroke: var(--color-white);
+  }
+}
+
+html.theme-light .search-bar {
+  svg path {
+    stroke: var(--color-black);
+  }
+}

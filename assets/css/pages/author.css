@@ -1,0 +1,71 @@
+/* Author page
+/* ---------------------------------------------------------- */
+
+.author-info {
+  padding: 1.4rem 1.4rem 1.4rem clamp(2.4rem, 0.686rem + 2.857vw, 4.8rem);
+  border-radius: var(--radius-medium);
+  column-gap: clamp(2.4rem, 0.257rem + 3.571vw, 5.4rem);
+  margin-bottom: 7.2rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column-reverse;
+    padding: 0;
+    border-radius: 0;
+    row-gap: 2rem;
+  }
+
+  &__main {}
+  &__small {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.71;
+    color: var(--color-dark-grey);
+  }
+  &__title {
+    margin-top: clamp(0.4rem, 0.114rem + 0.476vw, 0.8rem);
+
+    font-size: clamp(2.4rem, 2.114rem + 0.476vw, 2.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  &__bio {
+    margin-top: clamp(0.8rem, 0.514rem + 0.476vw, 1.2rem);
+
+    font-size: clamp(1.6rem, 1.457rem + 0.238vw, 1.8rem);
+    font-weight: 400;
+    line-height: 1.33;
+  }
+  &__image {
+    border-radius: var(--radius-small-medium);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}
+
+html.theme-dark .author-info {
+  border: 1px solid rgba(253, 253, 253, 0.10);
+
+  @media (max-width: 600px) {
+    border: none;
+  }
+
+  &__bio {
+    color: var(--color-light-grey);
+  }
+}
+
+html.theme-light .author-info {
+  border: 1px solid #CECEDB;
+
+  @media (max-width: 600px) {
+    border: none;
+  }
+
+  &__bio {
+    color: var(--color-dark-grey);
+  }
+}

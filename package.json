@@ -1,10 +1,11 @@
 {
     "name": "gto-wizard",
     "description": "Custom GTO Wizard Ghost theme",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
+    "license": "MIT",
     "scripts": {
         "dev": "rollup -c --environment BUILD:development -w",
         "build": "rollup -c --environment BUILD:production",
@@ -13,7 +14,8 @@
         "pretest": "npm run build"
     },
     "author": {
-        "name": "GTO Wizard"
+        "name": "GTO Wizard",
+        "email": "dan@gtowizard.com"
     },
     "gpm": {
         "type": "theme",
@@ -70,7 +72,37 @@
             "xl": {
                 "width": 2000
             }
+        },
+        "custom": {
+            "articles_formats": {
+                "type": "text"
+            },
+            "articles_types": {
+                "type": "text"
+            },
+            "patch_notes_formats": {
+                "type": "text"
+            },
+            "content_api_key": {
+                "type": "text"
+            },
+            "youtube_api_key": {
+                "type": "text"
+            },
+            "youtube_channel_id": {
+                "type": "text"
+            }
         }
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "@tryghost/content-api": "^1.12.0",
+        "baguettebox.js": "^1.13.0",
+        "fuse.js": "^7.1.0",
+        "lazysizes": "^5.3.2",
+        "postcss-nested": "^7.0.2",
+        "swiper": "^12.0.1",
+        "title-case": "^3.0.3",
+        "tocbot": "^4.36.4"
+    }
 }

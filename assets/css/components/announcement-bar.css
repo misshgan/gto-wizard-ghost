@@ -1,0 +1,14 @@
+/* Announcement Bar Component */
+/* ---------------------------------------------------------- */
+
+.gh-announcement,
+.gh-announcement-bar,
+[data-announcement],
+.announcement-bar,
+.gh-site-announcement {
+  /* Hide on screens 900px and smaller */
+  @media (max-width: 900px) {
+    display: none !important;
+  }
+}
+

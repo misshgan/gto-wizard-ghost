@@ -1,0 +1,64 @@
+/* Header component
+/* ---------------------------------------------------------- */
+
+.header {
+  padding: 1.8rem 0;
+  position: relative;
+  z-index: 100;
+
+  @media (max-width: 900px) {
+    position: fixed;
+    top: 0;
+    z-index: 150;
+    width: calc(100% - var(--side-padding) * 2);
+  }
+
+  .header-menu-button {
+    line-height: 0;
+    padding: 1rem;
+    padding-right: 0;
+
+    @media (min-width: 901px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+  .header-menu-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    cursor: pointer;
+
+    &--close {
+      display: none;
+    }
+  }
+
+  .search-bar {
+    margin-left: auto;
+  }
+  
+}
+
+html.theme-dark .header {
+  @media (max-width: 900px) {
+    background: var(--color-black);
+  }
+
+  .header-menu-icon {
+    path {
+      fill: var(--color-white);
+    }
+  }
+}
+
+html.theme-light .header {
+  @media (max-width: 900px) {
+    background: var(--color-white);
+  }
+
+  .header-menu-icon {
+    path {
+      fill: var(--color-black);
+    }
+  }
+}

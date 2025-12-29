@@ -1,0 +1,145 @@
+/* Theme toggle component
+/* ---------------------------------------------------------- */
+
+.theme-toggle {
+  margin-left: 3.2rem;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.theme-toggle--header {
+    @media (max-width: 900px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  &.theme-toggle--sidebar {
+    margin-left: 2.4rem;
+    margin-top: 3.2rem;
+
+    @media (min-width: 901px) {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Sun icon - visible in dark theme (to switch to light) */
+  .sun-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.8);
+    animation: sunGlow 2s ease-in-out infinite alternate;
+  }
+
+  /* Moon icon - visible in light theme (to switch to dark) */
+  .moon-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    animation: moonGlow 2s ease-in-out infinite alternate;
+  }
+
+  /* Theme transition animation */
+  &.theme-transitioning {
+    .sun-icon,
+    .moon-icon {
+      animation: themeSwitch 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  /* Hover effect */
+  &:hover {
+    transform: scale(1.05);
+    
+    svg {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+
+  /* Active click effect */
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+html.theme-dark .theme-toggle {
+  background-color: var(--color-light-black);
+
+  svg path {
+    fill: var(--color-white);
+  }
+
+  /* In dark theme: show sun (to switch to light), hide moon */
+  .sun-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  .moon-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-180deg) scale(0.8);
+  }
+}
+
+html.theme-light .theme-toggle {
+  background-color: #EEEEF0;
+
+  svg path {
+    fill: var(--color-light-black);
+  }
+
+  /* In light theme: hide sun, show moon (to switch to dark) */
+  .sun-icon {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-180deg) scale(0.8);
+  }
+
+  .moon-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+}
+
+/* Keyframe animations */
+@keyframes sunGlow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(255, 193, 7, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.6));
+  }
+}
+
+@keyframes moonGlow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(173, 216, 230, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(173, 216, 230, 0.6));
+  }
+}
+
+@keyframes themeSwitch {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.3);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}

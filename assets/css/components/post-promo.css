@@ -1,0 +1,23 @@
+/* Post Promo component
+/* ---------------------------------------------------------- */
+
+.post-promo {
+  margin-top: clamp(7.2rem, 3.771rem + 5.714vw, 12rem);
+  display: block;
+
+  img {
+    width: 100%;
+  }
+
+  .desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}

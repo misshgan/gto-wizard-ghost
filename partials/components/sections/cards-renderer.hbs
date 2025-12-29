@@ -1,0 +1,11 @@
+{{! Cards renderer partial - renders posts with appropriate card type }}
+{{#match cardType "==" 'default'}}
+  {{#foreach posts}}
+    {{> components/cards/card-default class=../cardClass}}
+  {{/foreach}}
+{{/match}}
+{{#match cardType "==" 'small'}}
+  {{#foreach posts}}
+    {{> components/cards/card-small class=../cardClass}}
+  {{/foreach}}
+{{/match}}

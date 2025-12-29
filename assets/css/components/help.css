@@ -1,0 +1,126 @@
+/* Help component
+/* ---------------------------------------------------------- */
+
+.help {
+  margin-top: clamp(9.6rem, 7.886rem + 2.857vw, 12rem);
+
+  &__title {
+    font-size: clamp(1.8rem, 1.514rem + 0.476vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.81;
+  }
+  &__content {
+    margin-top: clamp(2.4rem, 1.829rem + 0.952vw, 3.2rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2.4rem, 1.829rem + 0.952vw, 3.2rem);
+
+    @media (max-width: 1280px) {
+      grid-template-columns: 1.5fr 2fr;
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      row-gap: 2.4rem;
+    }
+  }
+}
+.help-links {
+  padding: clamp(3.2rem, 2.629rem + 0.952vw, 4rem) clamp(2.4rem, 1.257rem + 1.905vw, 4rem);
+  border-radius: var(--radius-small-medium);
+  border: 1px solid;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  &__list {
+    margin-top: 1.6rem;
+    row-gap: 1.6rem;
+  }
+  &__link {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: none;
+  }
+  &__main-link {
+    margin-top: 3.2rem;
+    column-gap: .8rem;
+
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.5;
+    text-decoration: none;
+    color: inherit;
+  }
+}
+.help-banner {
+  row-gap: 2rem;
+
+  &__image {
+    border-radius: var(--radius-small-medium);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      &.desktop {
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+
+      &.mobile {
+        @media (min-width: 769px) {
+          display: none;
+        }
+      }
+    }
+  }
+  &__title {
+    font-size: clamp(1.6rem, 1.029rem + 0.952vw, 2.4rem);
+    font-weight: 500;
+    line-height: 1.33;
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+html.theme-dark {
+  .help-links {
+    border-color: rgba(253, 253, 253, 0.10);
+
+    &__link {
+      color: var(--color-light-grey);
+    }
+
+    &__main-link svg path {
+      fill: var(--color-white);
+    }
+  }
+}
+
+html.theme-light {
+  .help-links {
+    border-color: #CECEDB;
+
+    &__link {
+      color: var(--color-dark-grey);
+    }
+
+    &__main-link svg path {
+      fill: var(--color-black);
+    }
+  }
+}

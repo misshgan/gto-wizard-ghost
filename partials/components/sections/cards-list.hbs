@@ -1,0 +1,125 @@
+<section 
+  class="cards-list {{class}} flex direction-column" 
+  data-scenario="{{scenario}}"
+  data-card-type="{{cardType}}"
+  data-card-class="{{cardClass}}"
+  data-limit="{{limit}}"
+  data-infinite-scroll="{{infiniteScroll}}"
+  data-types="{{types}}"
+  data-filter-by-authors="{{filterByAuthors}}"
+  data-author-slug="{{authorSlug}}"
+  data-tag-slug="{{tagSlug}}"
+  data-formats="{{formats}}"
+>
+  <div class="cards-list__header flex items-center space-between">
+    <h2 class="cards-list__title">
+      {{#match scenario "==" 'mixed'}}
+        <span class="cards-list__modes">
+          <button class="cards-list__mode-button" data-mode="articles">Articles</button>
+          <button class="cards-list__mode-button" data-mode="videos">Videos</button>
+        </span>
+      {{else}}
+        {{title}}
+      {{/match}}
+    </h2>
+    {{#if viewAllUrl}}
+      <a href="{{viewAllUrl}}" class="cards-list__view-all">View all</a>
+    {{/if}}
+  </div>
+  {{#match scenario "!=" 'author'}}
+    <div class="cards-list__filter cards-filter flex items-center space-between">
+      {{#match scenario "==" 'articles'}}
+        {{#get "tags" filter="slug:[{{formats}}]" limit="all" order="published_at desc"}}
+          <ul class="cards-filter__list flex items-center">
+            <li class="cards-filter__item">
+              <button data-slug="all" class="cards-filter__item-button active">All</button>
+            </li>
+            {{#foreach tags}}
+              <li class="cards-filter__item">
+                <button data-slug="{{slug}}" class="cards-filter__item-button">{{name}}</button>
+              </li>
+            {{/foreach}}
+          </ul>
+        {{/get}}
+      {{/match}}
+      
+      {{#match scenario "==" 'videos'}}
+        <ul class="cards-filter__list flex items-center">
+          <li class="cards-filter__item">
+            <button data-slug="all" class="cards-filter__item-button active">All</button>
+          </li>
+        </ul>
+      {{/match}}
+      
+      {{#match scenario "==" 'mixed'}}
+       {{#get "tags" filter="slug:[{{formats}}]" limit="all" order="published_at desc"}}
+          <ul class="cards-filter__list flex items-center">
+            <li class="cards-filter__item">
+              <button data-slug="all" class="cards-filter__item-button active">All</button>
+            </li>
+            {{#foreach tags}}
+              <li class="cards-filter__item">
+                <button data-slug="{{slug}}" class="cards-filter__item-button">{{name}}</button>
+              </li>
+            {{/foreach}}
+          </ul>
+        {{/get}}
+      {{/match}}
+      
+      <div class="cards-filter__popup-container">
+        <button class="cards-filter__button flex items-center">
+          <span>Filter</span>
+          {{> icons/filter class="filter-icon"}}
+          {{> icons/close class="close-icon"}}
+        </button>
+        {{> components/filter-popup}}
+      </div>
+    </div>
+  {{/match}}
+  
+  {{#match scenario "==" 'author'}}
+    <div class="cards-list__filter cards-filter flex items-center space-between">
+      <ul class="cards-filter__list flex items-center">
+        <li class="cards-filter__item">
+          <button data-slug="all" class="cards-filter__item-button active">All</button>
+        </li>
+        {{#get "posts" filter="authors:{{authorSlug}}" include="tags" limit="all"}}
+          {{#foreach posts}}
+            {{#if primary_tag}}
+              <li class="cards-filter__item">
+                <button data-slug="{{primary_tag.slug}}" class="cards-filter__item-button">{{primary_tag.name}}</button>
+              </li>
+            {{/if}}
+          {{/foreach}}
+        {{/get}}
+      </ul>
+    </div>
+  {{/match}}
+  <div class="cards-list__articles">
+    {{#match scenario "==" 'articles'}}
+      {{#get "posts" filter="tags:[{{formats}}]" include="tags" limit=limit}}
+        {{> components/sections/cards-renderer cardType=../cardType cardClass=../cardClass}}
+      {{/get}}
+    {{/match}}
+    
+    {{#match scenario "==" 'videos'}}
+      {{! Videos are loaded dynamically by JavaScript from YouTube API }}
+      <div class="cards-loading">
+        <div class="cards-loading__spinner"></div>
+        <p>Loading videos...</p>
+      </div>
+    {{/match}}
+    
+    {{#match scenario "==" 'mixed'}}
+      {{#get "posts" filter="tags:[{{formats}}]" include="tags" limit=limit}}
+        {{> components/sections/cards-renderer cardType=../cardType cardClass=../cardClass}}
+      {{/get}}
+    {{/match}}
+    
+    {{#match scenario "==" 'author'}}
+      {{#get "posts" filter="authors:{{authorSlug}}" include="tags" limit=limit}}
+        {{> components/sections/cards-renderer cardType=../cardType cardClass=../cardClass}}
+      {{/get}}
+    {{/match}}
+  </div>
+</section>

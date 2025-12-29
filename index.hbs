@@ -1,3 +1,42 @@
 {{!< default}}
 
-<h1>Hello</h1>
+{{#get 'posts' include="tags" limit='1' filter='featured:true'}}
+  {{#foreach posts}}
+    {{> components/cards/card-featured}}
+  {{/foreach}}
+{{/get}}
+
+
+{{>
+  components/sections/cards-list
+  scenario="mixed"
+  class="cards-list--articles"
+  title="Articles"
+  viewAllUrl="/articles"
+  formats=@custom.articles_formats
+  types=@custom.articles_types
+  cardType='small'
+  limit='4'
+  id='home-articles'
+  filterByAuthors='true'
+}}
+
+{{> 
+  components/sections/cards-list
+  scenario="articles"
+  class="cards-list--patch-notes"
+  title="Patch Notes"
+  viewAllUrl="/patch-notes"
+  formats=@custom.patch_notes_formats
+  cardType='default'
+  limit='2'
+  id='home-patch-notes'
+}}
+
+{{> components/sections/help}}
+
+{{> components/sections/features}}
+
+{{> components/sections/daily-dose}}
+
+{{!-- {{> components/sections/promo-carousel}} --}}

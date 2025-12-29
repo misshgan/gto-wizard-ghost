@@ -1,0 +1,24 @@
+/* Daily Dose component
+/* ---------------------------------------------------------- */
+
+.daily-dose {
+  margin-top: clamp(9.6rem, 7.886rem + 2.857vw, 12rem);
+  display: block;
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    @media (min-width: 769px) {
+      display: none;
+    }
+  }
+}

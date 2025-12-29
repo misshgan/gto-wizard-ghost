@@ -11,6 +11,7 @@ import terser from '@rollup/plugin-terser';
 // CSS
 // Enable the PostCSS preprocessor
 import postcss from 'rollup-plugin-postcss';
+import postcssNested from 'postcss-nested';
 // Use @import to include other CSS files
 import atImport from 'postcss-import';
 // Use the latest CSS features in your Rollup bundle
@@ -37,6 +38,7 @@ export default defineConfig({
             extract: true,
             sourceMap: true,
             plugins: [
+                postcssNested(),
                 atImport(),
                 postcssPresetEnv({})
             ], 

@@ -1,0 +1,25 @@
+<div class="search" data-content-key="{{content_api_key}}" data-youtube-key="{{@custom.youtube_api_key}}" data-youtube-channel-id="{{@custom.youtube_channel_id}}">
+  <header class="search-header flex items-center">
+    {{> components/logo-dropdown class='logo-dropdown--search'}}
+    <button class="search-close-button js-search-close">
+      {{> icons/close class='search-close-icon'}}
+    </button>
+    {{> components/theme-toggle class='theme-toggle--search'}}
+  </header>
+  <div class="wrapper flex direction-column">
+    <div class="search-input-container flex items-center">
+      <input type="text" class="search-input" placeholder="Search here …">
+    </div>
+    <div class="search-deep flex items-center">
+      <button class="search-deep-switch">
+        <div class="search-deep-switch__knob"></div>
+      </button>
+      <span>Deep search</span>
+    </div>
+    <div class="search-results">
+      <h2 class="search-results__title">Sources</h2>
+      <div class="search-results__list">
+      </div>
+    </div>
+  </div>
+</div>

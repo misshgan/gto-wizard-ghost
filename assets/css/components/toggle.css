@@ -1,0 +1,154 @@
+/* Toggle component
+/* ---------------------------------------------------------- */
+
+.toggle {
+  margin: 3.2rem 0 0;
+}
+
+.toggle__header {
+  display: flex;
+  align-items: center;
+  column-gap: .8rem;
+}
+
+.toggle__title {
+  font-family: var(--font-sans-serif);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 1.457rem + 0.238vw, 1.8rem);
+  line-height: 1.75;
+  color: var(--color-text-primary);
+}
+
+.toggle__icon {
+  display: block;
+  flex-shrink: 0;
+  line-height: 0;
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.toggle.is-open .toggle__icon {
+  transform: rotate(0deg);
+}
+
+.toggle__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  padding: 0;
+  opacity: 0;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.toggle.is-open .toggle__content {
+  max-height: 5000px;
+  padding: 2.4rem 0 0;
+  opacity: 1;
+}
+
+/* Content styles - same as post content but narrower */
+.toggle__content > * {
+  font-family: var(--font-sans-serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 1.457rem + 0.238vw, 1.8rem);
+  line-height: 1.75;
+  color: var(--color-text-primary);
+}
+
+.toggle__content > * + * {
+  margin-top: 3.2rem;
+}
+
+.toggle__content h2 {
+  font-size: clamp(3.2rem, 2.629rem + 0.952vw, 4rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.toggle__content h3 {
+  font-size: clamp(2.4rem, 1.829rem + 0.952vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.toggle__content h4 {
+  font-size: clamp(2.2rem, 2.057rem + 0.238vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.33;
+}
+
+.toggle__content ul,
+.toggle__content ol {
+  padding-left: 1.9rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.4rem;
+}
+
+.toggle__content li::marker {
+  color: var(--color-dark-grey);
+}
+
+.toggle__content blockquote {
+  position: relative;
+  font-style: italic;
+  font-size: clamp(2.2rem, 1.771rem + 0.714vw, 2.8rem);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.toggle__content blockquote::before {
+  content: "";
+  position: absolute;
+  left: -1.5em;
+  top: 0;
+  bottom: 0;
+  width: 0.3rem;
+  background: var(--color-primary);
+}
+
+.toggle__content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-large);
+}
+
+.toggle__content code {
+  vertical-align: middle;
+  padding: 0.15em 0.4em 0.15em;
+  border: #e1eaef 1px solid;
+  font-weight: 400 !important;
+  font-size: 0.9em;
+  line-height: 1em;
+  color: #dc0050;
+  background: #f0f6f9;
+  border-radius: 0.25em;
+}
+
+html.theme-light {
+  .toggle {
+    &__icon::after {
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.6491 18.8476C23.4241 19.0723 23.1191 19.1985 22.8011 19.1985C22.4831 19.1985 22.1781 19.0723 21.9531 18.8476L16.0011 12.8956L10.0491 18.8476C9.9392 18.9655 9.80672 19.06 9.65952 19.1256C9.51232 19.1912 9.35342 19.2265 9.19229 19.2293C9.03117 19.2321 8.87112 19.2025 8.7217 19.1422C8.57228 19.0818 8.43655 18.992 8.32259 18.878C8.20864 18.7641 8.11881 18.6283 8.05846 18.4789C7.99811 18.3295 7.96847 18.1694 7.97131 18.0083C7.97415 17.8472 8.00942 17.6883 8.07501 17.5411C8.14059 17.3939 8.23516 17.2614 8.35306 17.1516L15.1531 10.3516C15.3781 10.1268 15.6831 10.0006 16.0011 10.0006C16.3191 10.0006 16.6241 10.1268 16.8491 10.3516L23.6491 17.1516C23.8738 17.3766 24 17.6816 24 17.9996C24 18.3176 23.8738 18.6226 23.6491 18.8476Z" fill="%23000000"/></svg>');
+    }
+  }
+}
+
+html.theme-dark {
+  .toggle {
+    &__icon::after {
+      content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.6491 18.8476C23.4241 19.0723 23.1191 19.1985 22.8011 19.1985C22.4831 19.1985 22.1781 19.0723 21.9531 18.8476L16.0011 12.8956L10.0491 18.8476C9.9392 18.9655 9.80672 19.06 9.65952 19.1256C9.51232 19.1912 9.35342 19.2265 9.19229 19.2293C9.03117 19.2321 8.87112 19.2025 8.7217 19.1422C8.57228 19.0818 8.43655 18.992 8.32259 18.878C8.20864 18.7641 8.11881 18.6283 8.05846 18.4789C7.99811 18.3295 7.96847 18.1694 7.97131 18.0083C7.97415 17.8472 8.00942 17.6883 8.07501 17.5411C8.14059 17.3939 8.23516 17.2614 8.35306 17.1516L15.1531 10.3516C15.3781 10.1268 15.6831 10.0006 16.0011 10.0006C16.3191 10.0006 16.6241 10.1268 16.8491 10.3516L23.6491 17.1516C23.8738 17.3766 24 17.6816 24 17.9996C24 18.3176 23.8738 18.6226 23.6491 18.8476Z" fill="%23FFFFFF"/></svg>');
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .toggle__content {
+    max-width: 100%;
+  }
+  
+  .toggle.is-open .toggle__content {
+    padding: 1.2rem 0 0;
+  }
+}

@@ -1,0 +1,41 @@
+/* Flex utilities
+/* ---------------------------------------------------------- */
+
+.flex {
+  display: flex;
+
+  &.items-center {
+      align-items: center;
+  }
+
+  &.items-end {
+      align-items: flex-end;
+  }
+  &.items-top {
+      align-items: flex-start
+  }
+
+  &.direction-column {
+      flex-direction: column;
+  }
+
+  &.direction-row {
+      flex-direction: row;
+  }
+
+  &.space-between {
+      justify-content: space-between;
+  }
+
+  &.content-end {
+      justify-content: end;
+  }
+
+  &.content-center {
+      justify-content: center;
+  }
+
+  &.content-space-between {
+      justify-content: space-between;
+  }
+}
